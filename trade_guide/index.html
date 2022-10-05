@@ -1,0 +1,89 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Розничный гид</title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/tinysort.min.js"></script>
+	<script type="text/javascript" src="/js/tinysort.charorder.min.js"></script>
+	<script type="text/javascript" src="./script.js"></script>
+	<script type="text/javascript" src="/js/chosen.jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/jquery.multiselect.css" />
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/chosen.min.css" />
+	<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.multiselect.min.js"></script>
+	<script type="text/javascript" src="/js/zip.js"></script>
+	<script type="text/javascript" src="/js/zip-ext.js"></script>
+</head>
+<body>
+<div>
+<span lang="ru"><a href="/" style="font-size:12px; color:#000000;">Главная</a>&nbsp;|&nbsp;</span>
+<a href="/by_trade_at_cities/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Retail sales</span><span lang="ru">Розничная торговля в городах</span></a>
+&nbsp;|&nbsp;
+<a href="/retail_trends/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Retail trends</span><span lang="ru">Розничные тренды</span></a>
+&nbsp;|&nbsp;
+<a href="/remain_trends/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Remains trends</span><span lang="ru">Сырьевые тренды</span></a>
+&nbsp;|&nbsp;
+<a href="/by_service/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Services sector</span><span lang="ru">Сфера услуг</span></a>
+&nbsp;|&nbsp;
+<a href="/industry/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Production</span><span lang="ru">Производство</span></a>
+&nbsp;|&nbsp;
+<a href="/production_above_average/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Production (above average quality)</span><span lang="ru">Производство (выше среднего качества)</span></a>
+ |
+<a href="#" style="font-weight:bold; font-size:12px; color:#000000;"><span lang="en" style="display:none">Retail guide</span><span lang="ru">Розничный гид</span></a>
+&nbsp;|&nbsp;
+<a href="/service_guide/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Service sector guide</span><span lang="ru">Гид по сфере услуг</span></a>
+</div>
+<div style="position: absolute; top: 10; right: 10;">
+	<img id="locale_flag" src="/img/ru.png">&nbsp;
+	<select name="locale" id="locale" onchange="changeLocale();">
+		<option value="ru" selected>Русский</option>
+		<option value="en">English</option>
+	</select>
+</div>
+<br>
+<form method="GET" onsubmit="return loadData();">
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody><tr><td>
+<table border="1" width="100%" cellspacing="0" cellpadding="5" bordercolordark="#000000" bordercolorlight="#FFFFFF">
+<tbody><tr class="trec"><td nowrap="">
+<u><b><span lang="en" style="display:none">Realm</span><span lang="ru">Реалм</span></b></u>&nbsp;<select id="realm" name="realm" onchange="changeRealm();">
+<option value="vera" selected="">vera</option>
+<option value="olga">olga</option>
+<option value="anna">anna</option>
+<option value="lien">lien</option>
+<option value="mary">mary</option>
+<option value="fast">fast</option>
+<option value="nika">nika</option>
+<option value="crypto">crypto</option>
+</select>
+<span id="update_date"></span>
+<br>
+<select id="id_category" onchange="changeCategory();"></select>
+<br>
+<select id="id_country" onchange="changeCountry();">
+<option value="" selected="">Все страны</option>	
+</select>&nbsp;<select id="id_region" onchange="changeRegion();">
+<option value="" selected="">Все регионы</option>
+</select>&nbsp;<select id="id_town" onchange="changeTown();"><option value="" selected="">Все города</option>
+</select>
+<br>
+<input type="submit" id="btnSubmit" value="Сформировать">
+</td></tr>
+</tbody></table>
+</td></tr>
+<tr><td>
+<input type="hidden" id="sort_col_id" name="sort_col_id" value="profit">
+<input type="hidden" id="sort_dir" name="sort_dir" value="desc">
+<div id="table-container">
+<table id="xtable" border="1" width="100%" cellspacing="0" cellpadding="2" bordercolorlight="#000000" bordercolordark="#FFFFFF">
+<thead id="xtablethead"></thead>
+<tbody id="xtabletbody"></tbody>
+</table>
+<div id="graph" style="position:fixed; bottom:5px; right:5px;"></div>
+<div id="bottom_anchor"></div>
+</div>
+</td></tr>
+</tbody></table>
+</form>
+<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter29957719 = new Ya.Metrika({ id:29957719, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/29957719" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+</body></html>

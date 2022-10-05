@@ -1,0 +1,171 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Спрогнозировать розничные продажи</title> 
+	<script type="text/javascript" src="http://yastatic.net/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript" src="./tinysort.min.js"></script>
+	<script type="text/javascript" src="./tinysort.charorder.min.js"></script>
+	<script type="text/javascript" src="./script.js"></script>
+  <link rel="stylesheet" type="text/css" href="./main.css">
+</head>
+<body>
+<div>
+<a href="/" style="font-size:12px; color:#000000;">Главная</a>
+&nbsp;|&nbsp;
+<a href="/by_trade_at_cities/" style="font-size:12px; color:#000000;">Розничная торговля в городах</a>
+&nbsp;|&nbsp;
+<a href="/industry/" style="font-size:12px; color:#000000;">Производство</a>
+&nbsp;|&nbsp;
+<a href="#" style="font-weight:bold; font-size:12px; color:#000000;">Спрогнозировать розничные продажи</a>
+&nbsp;
+</div>
+<br>
+<form method="GET" onsubmit="return loadData();">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody><tr><td>
+<table border="1" width="100%" cellspacing="0" cellpadding="5" bordercolordark="#000000" bordercolorlight="#FFFFFF">
+<tbody><tr class="trec"><td nowrap="">
+<u><b>Реалм</b></u>&nbsp;<select id="realm" name="realm" onchange="changeRealm();">
+<option value="vera" selected="">vera</option>
+<option value="olga">olga</option>
+<option value="anna">anna</option>
+<option value="lien">lien</option>
+<option value="mary">mary</option>
+</select>
+<input type="text" id="update_date" value="" readonly>
+<br>
+<select id="id_category" onchange="changeCategory();"></select>&nbsp;<div id="products"></div>
+<input type="hidden" id="id_product" name="id_product" value="">
+<br>
+<select id="id_country" onchange="changeCountry();"></select>&nbsp;<select id="id_region" onchange="changeRegion();"></select>
+<br>
+<u><b>район города</b></u> <select id="townDistrict" name="townDistrict" onchange="loadData();">
+<option value="Фешенебельный район">Фешенебельный район</option>
+<option value="Центр города" selected="">Центр города</option>
+<option value="Спальный район">Спальный район</option>
+<option value="Пригород">Пригород</option>
+<option value="Окраина">Окраина</option>
+</select>, 
+<u><b>торговая площадь</b></u> <select id="shopSize" name="shopSize" onchange="loadData();">
+<option value="100000">100 000</option>
+<option value="10000" selected="">10 000</option>
+<option value="1000">1000</option>
+<option value="500">500</option>
+<option value="100">100</option>
+</select>, 
+<u><b>количество отделов</b></u> <input type="text" id="departmentCount" size="1" maxlength="10" value="1">, 
+<u><b>известность</b></u> <input type="text" id="notoriety" size="3" maxlength="7" value="400.00">,
+<br>
+<u><b>количество посетителей</b></u> <select id="visitorsСount" name="visitorsСount" onchange="loadData();">
+<option value="менее 50">менее 50</option>
+<option value="около 50">около 50</option>
+<option value="около 100">около 100</option>
+<option value="более 100">более 100</option>
+<option value="около 200">около 200</option>
+<option value="более 200">более 200</option>
+<option value="около 300">около 300</option>
+<option value="более 300">более 300</option>
+<option value="около 500">около 500</option>
+<option value="более 500">более 500</option>
+<option value="около 1 000">около 1 000</option>
+<option value="более 1 000">более 1 000</option>
+<option value="около 2 000">около 2 000</option>
+<option value="более 2 000">более 2 000</option>
+<option value="около 3 000">около 3 000</option>
+<option value="более 3 000">более 3 000</option>
+<option value="около 5 000">около 5 000</option>
+<option value="более 5 000">более 5 000</option>
+<option value="около 10 000">около 10 000</option>
+<option value="более 10 000">более 10 000</option>
+<option value="около 20 000">около 20 000</option>
+<option value="более 20 000">более 20 000</option>
+<option value="около 30 000">около 30 000</option>
+<option value="более 30 000">более 30 000</option>
+<option value="около 50 000">около 50 000</option>
+<option value="более 50 000">более 50 000</option>
+<option value="около 100 000">около 100 000</option>
+<option value="более 100 000">более 100 000</option>
+<option value="около 200 000">около 200 000</option>
+<option value="более 200 000">более 200 000</option>
+<option value="около 300 000">около 300 000</option>
+<option value="более 300 000">более 300 000</option>
+<option value="около 500 000" selected="">около 500 000</option>
+<option value="более 500 000">более 500 000</option>
+<option value="около 1 000 000">около 1 000 000</option>
+<option value="более 1 000 000">более 1 000 000</option>
+<option value="около 2 000 000">около 2 000 000</option>
+<option value="более 2 000 000">более 2 000 000</option>
+<option value="около 3 000 000">около 3 000 000</option>
+<option value="более 3 000 000">более 3 000 000</option>
+<option value="около 5 000 000">около 5 000 000</option>
+<option value="более 5 000 000">более 5 000 000</option>
+<option value="около 10 000 000">около 10 000 000</option>
+<option value="более 10 000 000">более 10 000 000</option>
+<option value="около 20 000 000">около 20 000 000</option>
+<option value="более 20 000 000">более 20 000 000</option>
+<option value="около 30 000 000">около 30 000 000</option>
+<option value="более 30 000 000">более 30 000 000</option>
+<option value="около 50 000 000">около 50 000 000</option>
+<option value="более 50 000 000">более 50 000 000</option>
+<option value="около 100 000 000">около 100 000 000</option>
+<option value="более 100 000 000">более 100 000 000</option>
+<option value="около 200 000 000">около 200 000 000</option>
+<option value="более 200 000 000">более 200 000 000</option>
+<option value="около 300 000 000">около 300 000 000</option>
+<option value="более 300 000 000">более 300 000 000</option>
+<option value="около 500 000 000">около 500 000 000</option>
+<option value="более 500 000 000">более 500 000 000</option>
+<option value="около 1 000 000 000">около 1 000 000 000</option>
+<option value="более 1 000 000 000">более 1 000 000 000</option>
+<option value="около 2 000 000 000">около 2 000 000 000</option>
+<option value="более 2 000 000 000">более 2 000 000 000</option>
+<option value="около 3 000 000 000">около 3 000 000 000</option>
+<option value="более 3 000 000 000">более 3 000 000 000</option>
+<option value="около 5 000 000 000">около 5 000 000 000</option>
+<option value="более 5 000 000 000">более 5 000 000 000</option>
+</select>, 
+<u><b>уровень сервиса</b></u> <select id="serviceLevel" name="serviceLevel" onchange="loadData();">
+<option value="Элитный">Элитный</option>
+<option value="Очень высокий" selected="">Очень высокий</option>
+<option value="Высокий">Высокий</option>
+<option value="Нормальный">Нормальный</option>
+<option value="Низкий">Низкий</option>
+<option value="Очень низкий">Очень низкий</option>
+</select>
+<br>
+<u><b>качество</b></u>  <input type="text" id="quality" size="7" maxlength="7" value="1.00"> 
+<br>
+<u><b>бренд</b></u> <input type="text" id="brand" size="7" maxlength="7" value="1.00"> 
+<br>
+<u><b>доля рынка</b></u> <input type="text" id="market_volume_percent" size="7" maxlength="7" value="10"> %
+<br>
+<input type="submit" id="btnSubmit" value="Сформировать">
+</td></tr>
+</tbody></table>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>
+<input type="hidden" id="sort_col_id" name="sort_col_id" value="th_city">
+<input type="hidden" id="sort_dir" name="sort_dir" value="asc">
+<table id="xtable" border="1" width="100%" cellspacing="0" cellpadding="2" bordercolorlight="#000000" bordercolordark="#FFFFFF">
+<thead><tr class="theader">
+<th id="th_city">Город&nbsp;<b id="sort_by_city"></b></th>
+<th id="th_dem" title="тыс. чел.">Демография&nbsp;<b id="sort_by_dem"></b></th>
+<th id="th_volume_set">Прогноз, цена&nbsp;<b id="sort_by_volume_set"></b></th>
+<th id="th_volume_set1">Прогноз, цена (Магазины)&nbsp;<b id="sort_by_volume_set1"></b></th>
+<th id="th_volume_set2">Прогноз, цена (Местные)&nbsp;<b id="sort_by_volume_set2"></b></th>
+<th id="th_volume_cv">Магазины, цена&nbsp;<b id="sort_by_volume_cv"></b></th>
+<th id="th_volume_cv1">Магазины, кач.&nbsp;<b id="sort_by_volume_cv1"></b></th>
+<th id="th_volume_cv2">Магазины, бренд&nbsp;<b id="sort_by_volume_cv2"></b></th>
+<th id="th_volume_perc_set">Местные, цена&nbsp;<b id="sort_by_volume_perc_set"></b></th>
+<th id="th_volume_perc_set1">Местные, кач.&nbsp;<b id="sort_by_volume_perc_set1"></b></th>
+</tr>
+</thead>
+<tbody id="xtabletbody">
+</tbody>
+</table>
+</td></tr>
+<tr><td><div id="prediction_summary"></div></td></tr>
+</tbody></table>
+</form>
+
+<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter29957719 = new Ya.Metrika({ id:29957719, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/29957719" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+</body></html>

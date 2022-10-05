@@ -1,0 +1,115 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Производство</title>
+	<link rel="stylesheet" type="text/css" href="./main.css">
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="./tinysort.min.js"></script>
+	<script type="text/javascript" src="./tinysort.charorder.min.js"></script>
+	<script type="text/javascript" src="/js/autoNumeric-min.js"></script>
+	<script type="text/javascript" src="./script.js"></script>
+</head>
+<body>
+<div>
+<span lang="ru"><a href="/" style="font-size:12px; color:#000000;">Главная</a>&nbsp;|&nbsp;</span>
+<a href="/by_trade_at_cities/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Retail sales</span><span lang="ru">Розничная торговля в городах</span></a>
+&nbsp;|&nbsp;
+<a href="/retail_trends/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Retail trends</span><span lang="ru">Розничные тренды</span></a>
+&nbsp;|&nbsp;
+<a href="/remain_trends/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Remains trends</span><span lang="ru">Сырьевые тренды</span></a>
+&nbsp;|&nbsp;
+<a href="/by_service/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Services sector</span><span lang="ru">Сфера услуг</span></a>
+&nbsp;|&nbsp;
+<a href="#" style="font-weight:bold; font-size:12px; color:#000000;"><span lang="en" style="display:none">Production</span><span lang="ru">Производство</span></a>
+&nbsp;|&nbsp;
+<a href="/production_above_average/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Production (above average quality)</span><span lang="ru">Производство (выше среднего качества)</span></a>
+&nbsp;|&nbsp;
+<a href="/trade_guide/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Retail guide</span><span lang="ru">Розничный гид</span></a>
+&nbsp;|&nbsp;
+<a href="/service_guide/" style="font-size:12px; color:#000000;"><span lang="en" style="display:none">Service sector guide</span><span lang="ru">Гид по сфере услуг</span></a>
+&nbsp;
+</div>
+<div style="position: absolute; top: 10; right: 10;">
+	<img id="locale_flag" src="/img/ru.png">&nbsp;
+	<select name="locale" id="locale" onchange="changeLocale();">
+		<option value="ru" selected>Русский</option>
+		<option value="en">English</option>
+	</select>
+</div>
+<br>
+<form method="GET" onsubmit="return loadData();">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody><tr><td>
+<table border="1" width="100%" cellspacing="0" cellpadding="5" bordercolordark="#000000" bordercolorlight="#FFFFFF">
+<tbody><tr class="trec"><td nowrap="">
+<u><b><span lang="en" style="display:none">Realm</span><span lang="ru">Реалм</span></b></u>&nbsp;<select id="realm" name="realm" onchange="changeRealm();">
+<option value="vera" selected="">vera</option>
+<option value="olga">olga</option>
+<option value="anna">anna</option>
+<option value="lien">lien</option>
+<option value="mary">mary</option>
+<option value="fast">fast</option>
+<option value="nika">nika</option>
+<option value="crypto">crypto</option>
+</select>
+<span id="update_date"></span>
+<br>
+<select id="id_category" onchange="changeCategory();"></select>&nbsp;<div id="materials"></div>
+<input type="hidden" id="id_product" name="id_product" value="">
+<br>
+<u><b><span lang="en" style="display:none">Volume of available raw materials</span><span lang="ru">Объём доступного сырья</span></b></u><div id="volumeFromByMaterials"></div>
+<u><b><span lang="en" style="display:none">Cost price</span><span lang="ru">Себестоимость</span></b></u>
+	<span lang="en" style="display:none">from</span><span lang="ru">от</span>
+	<input type="number" step="0.01" id="cost_from" size="20" maxlength="32" value="0.00">
+	<span lang="en" style="display:none">to</span><span lang="ru">до</span>
+	<input type="number" step="0.01" id="cost_to" size="20" maxlength="32" value="1000000000000.00"><br>
+<u><b><span lang="en" style="display:none">Quality</span><span lang="ru">Качество</span></b></u>
+	<span lang="en" style="display:none">from</span><span lang="ru">от</span>
+	<input type="number" step="0.01" id="quality_from" size="7" maxlength="7" value="1.00">
+	<span lang="en" style="display:none">to</span><span lang="ru">до</span>
+	<input type="number" step="0.01" id="quality_to" size="7" maxlength="7" value="10000.00"><br>
+<u><b><span lang="en" style="display:none">Technology</span><span lang="ru">Технология</span></b></u>
+	<span lang="en" style="display:none">from</span><span lang="ru">от</span>
+	<input type="number" id="tech_from" size="3" maxlength="3" value="10">
+	<span lang="en" style="display:none">to</span><span lang="ru">до</span>
+	<input type="number" id="tech_to" size="3" maxlength="3" value="10"><br>
+<u><b><span lang="en" style="display:none">Number of workplaces</span><span lang="ru">Количество работников</span></b></u>
+	<input type="number" id="workQuan" size="7" maxlength="32" value="10000">, <u><b><span lang="en" style="display:none">salary</span><span lang="ru">зарплата</span></b></u>
+	<input type="number" step="0.01" id="workSalary" size="7" maxlength="32" value="300"><br>
+<u><b><span lang="en" style="display:none">Selling price</span><span lang="ru">Цена продажи</span></b></u>
+	<input type="number" step="0.01" id="salePrice" size="12" value="0"><br>
+<input type="submit" id="btnSubmit" value="Сформировать">
+	<div id="messages"></div>
+</td></tr>
+</tbody></table>
+</td></tr>
+<tr><td><div id="calc_log"></div></td></tr>
+<tr class="trec" align="right"><td>
+	<a id="general_report_link" href="https://virtonomics.com/olga/main/globalreport/product_history/1490" target="_blank">
+		<span lang="en" style="display:none">Production: general report</span>
+		<span lang="ru">Производство: обзорный отчёт</span>
+	</a></td>
+</tr>
+<tr><td>
+<input type="hidden" id="sort_col_id" value="costperqua">
+<input type="hidden" id="sort_dir" value="asc">
+<table id="xtable" border="1" width="100%" cellspacing="0" cellpadding="2" bordercolorlight="#000000" bordercolordark="#FFFFFF">
+<thead><tr class="theader">
+<td><span lang="en" style="display:none">Specialization</span><span lang="ru">Специализация</span>&nbsp;</td>
+<td><span lang="en" style="display:none">Equipment</span><span lang="ru">Оборудование</span>&nbsp;</td>
+<th id="th_tech"><span lang="en" style="display:none">Technology</span><span lang="ru">Технология</span>&nbsp;<b id="sort_by_tech"></b></th>
+<td><span lang="en" style="display:none">Raw material</span><span lang="ru">Сырьё</span></td>
+<th id="th_quality"><span lang="en" style="display:none">Quality</span><span lang="ru">Качество</span>&nbsp;<b id="sort_by_quality"></b></th>
+<th id="th_quantity"><span lang="en" style="display:none">Quantity</span><span lang="ru">Количество</span>&nbsp;<b id="sort_by_quantity"></b></th>
+<th id="th_cost"><span lang="en" style="display:none">Cost price</span><span lang="ru">Себестоимость</span>&nbsp;<b id="sort_by_cost"></b></th>
+<th id="th_costperqua"><span lang="en" style="display:none" title="Cost of Quality Unit">CpQU</span><span lang="ru" title="Себестоимость единицы качества">С.е.к.</span>&nbsp;<b id="sort_by_costperqua"></b></th>
+<th id="th_profit"><span lang="en" style="display:none">Profit</span><span lang="ru">Прибыль</span>&nbsp;<b id="sort_by_profit"></b></th>
+</tr>
+</thead>
+<tbody id="xtabletbody">
+</tbody>
+</table>
+</td></tr>
+</tbody></table>
+</form>
+
+<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter29957719 = new Ya.Metrika({ id:29957719, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/29957719" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+</body></html>

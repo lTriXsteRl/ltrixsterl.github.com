@@ -1,0 +1,9 @@
+  body { font-family:Verdana, Arial, Helvetica, sans-serif; font-size:14px; }
+  .hoverable:hover {
+    background-color: #ededed;
+  }
+  .trec {font-size:12px;}
+  .trec1 {font-weight:bold; font-size:12px; color:#000000;}
+  .trec2 {font-size:9px;}
+  .theader {font-weight:bold; background-color:#DDDDDD; font-size:10px; text-align:center;}
+  .theader2 {font-weight:bold; background-color:#DDDDDD; font-size:8px; text-align:center;}
